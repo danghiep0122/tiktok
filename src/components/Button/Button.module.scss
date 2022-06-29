@@ -1,5 +1,8 @@
 .wrapper {
     font-size: 1.4rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     font-weight: 700;
     min-width: 100px;
     padding: 9px 16px;
@@ -17,6 +20,16 @@
         pointer-events: none;
         opacity: 0.5;
     }
+}
+
+.icon {
+    display: inline-block;
+    width: 24px;
+    text-align: center;
+}
+
+.icon + .title, .title + .icon {
+    margin-left: 6px;
 }
 
 //Button types

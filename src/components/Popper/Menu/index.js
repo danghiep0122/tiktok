@@ -9,7 +9,7 @@ import { useState } from 'react';
 
 const cx = classNames.bind(styles);
 
-const defaultFn = () => {}
+const defaultFn = () => {};
 
 function Menu({ children, items = [], onChange = defaultFn }) {
     const [history, setHistory] = useState([{ data: items }]);
@@ -26,7 +26,7 @@ function Menu({ children, items = [], onChange = defaultFn }) {
                         if (isParent) {
                             setHistory((prev) => [...prev, item.children]);
                         } else {
-                            onChange(item)
+                            onChange(item);
                         }
                     }}
                 />
@@ -37,6 +37,7 @@ function Menu({ children, items = [], onChange = defaultFn }) {
     return (
         <Tippy
             delay={[0, 800]}
+            offset={[16, 8]}
             interactive
             placement="bottom-end"
             render={(attrs) => (
@@ -54,6 +55,7 @@ function Menu({ children, items = [], onChange = defaultFn }) {
                     </PopperWrapper>
                 </div>
             )}
+            onHide={() => setHistory((prev) => prev.slice(0, 1))}
         >
             {children}
         </Tippy>

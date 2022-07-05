@@ -1,21 +1,7 @@
 import { useEffect, useState } from 'react';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-    faCircleXmark,
-    faSpinner,
-    faMagnifyingGlass,
-    faEllipsisVertical,
-    faEarthAsia,
-    faQuestionCircle,
-    faKeyboard,
-    faPlus,
-    faCloudUpload,
-    faUser,
-    faGear,
-    faCoins,
-    faSignOut,
-} from '@fortawesome/free-solid-svg-icons';
+import { faCircleXmark, faSpinner, faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
 import HeadlessTippy from '@tippyjs/react/headless';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
@@ -26,12 +12,25 @@ import style from './Header.module.scss';
 import images from '~/assets/images';
 import AccountItem from '~/components/AccountItem';
 import Menu from '~/components/Popper/Menu';
+import {
+    FeedbackandHelpIcon,
+    GetCoinIcon,
+    InboxIcon,
+    KeyboardShortcutIcon,
+    LanguageIcon,
+    LogoutIcon,
+    MagnifyingIcon,
+    MessageIcon,
+    PlusIcon,
+    SettingIcon,
+    UserIcon,
+} from '~/components/icons';
 
 const cx = classNames.bind(style);
 
 const MENU_ITEMS = [
     {
-        icon: <FontAwesomeIcon icon={faEarthAsia} />,
+        icon: <LanguageIcon width={'2rem'} height={'2rem'} />,
         title: 'Vietnamese',
         children: {
             title: 'Language',
@@ -52,12 +51,12 @@ const MENU_ITEMS = [
         },
     },
     {
-        icon: <FontAwesomeIcon icon={faQuestionCircle} />,
+        icon: <FeedbackandHelpIcon width={'2rem'} height={'2rem'} />,
         title: 'Feedback and help',
         to: '/feedback',
     },
     {
-        icon: <FontAwesomeIcon icon={faKeyboard} />,
+        icon: <KeyboardShortcutIcon width={'2rem'} height={'2rem'} />,
         title: 'Keyboard Shortcut',
     },
 ];
@@ -83,23 +82,23 @@ function Header() {
 
     const userMenu = [
         {
-            icon: <FontAwesomeIcon icon={faUser} />,
+            icon: <UserIcon width={'2rem'} height={'2rem'} />,
             title: 'View profile',
             to: '/profile',
         },
         {
-            icon: <FontAwesomeIcon icon={faCoins} />,
+            icon: <GetCoinIcon width={'2rem'} height={'2rem'} />,
             title: 'Get coin',
             to: '/coin',
         },
         {
-            icon: <FontAwesomeIcon icon={faGear} />,
+            icon: <SettingIcon width={'2rem'} height={'2rem'} />,
             title: 'Setting',
             to: '/setting',
         },
         ...MENU_ITEMS,
         {
-            icon: <FontAwesomeIcon icon={faSignOut} />,
+            icon: <LogoutIcon width={'2rem'} height={'2rem'} />,
             title: 'Log out',
             to: '/logout',
             separate: true,
@@ -138,25 +137,30 @@ function Header() {
                         </button>
                         <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
                         <button className={cx('search-btn')}>
-                            <FontAwesomeIcon icon={faMagnifyingGlass} />
+                            <MagnifyingIcon width={'2.4rem'} height={'2.4rem'} />
                         </button>
                     </div>
                 </HeadlessTippy>
 
                 <div className={cx('actions')}>
+                    <Button outline leftIcon={<PlusIcon width={'2rem'} height={'2rem'} />}>
+                        Upload
+                    </Button>
                     {currentUser ? (
                         <>
-                            <Tippy delay={[0, 200]} content="Upload Video" placement="bottom">
+                            <Tippy delay={[0, 200]} content="Message" placement="bottom">
                                 <button className={cx('action-btn')}>
-                                    <FontAwesomeIcon icon={faCloudUpload} />
+                                    <MessageIcon width={'2.6rem'} height={'2.6rem'} />
+                                </button>
+                            </Tippy>
+                            <Tippy delay={[0, 200]} content="Inbox" placement="bottom">
+                                <button className={cx('action-btn')}>
+                                    <InboxIcon />
                                 </button>
                             </Tippy>
                         </>
                     ) : (
                         <>
-                            <Button outline leftIcon={<FontAwesomeIcon icon={faPlus} />}>
-                                Upload
-                            </Button>
                             <Button primary>Log in</Button>
                         </>
                     )}

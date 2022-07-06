@@ -25,6 +25,7 @@ import {
     SettingIcon,
     UserIcon,
 } from '~/components/icons';
+import Image from '~/components/Image';
 
 const cx = classNames.bind(style);
 
@@ -166,10 +167,11 @@ function Header() {
                     )}
                     <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
                         {currentUser ? (
-                            <img
+                            <Image
                                 className={cx('user-avatar')}
                                 alt="Avatar"
-                                src="https://s3.amazonaws.com/static.revolutionparts.com/assets/images/bmw.png"
+                                src="https://???s3.amazonaws.com/static.revolutionparts.com/assets/images/bmw.png"
+                                fallback="https://s3.amazonaws.com/static.revolutionparts.com/assets/images/bmw.png"
                             />
                         ) : (
                             <button className={cx('more-btn')}>

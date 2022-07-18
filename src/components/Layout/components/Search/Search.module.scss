@@ -52,6 +52,19 @@
     width: 16px;
 }
 
+.loading {
+    animation: spinner 1s infinite linear;
+}
+
+@keyframes spinner {
+    from {
+        transform: translateY(-50%) rotate(0);
+    }
+    to {
+        transform: translateY(-50%) rotate(360deg);
+    }
+}
+
 .search-btn {
     width: var(--button-width);
     height: 100%;

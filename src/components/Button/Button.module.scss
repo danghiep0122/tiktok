@@ -4,7 +4,7 @@
     justify-content: center;
     font-size: 1.6rem;
     font-weight: 600;
-    font-family: 'ProximaNova', sans-serif;
+    font-family: var(--font-family);
     min-width: 100px;
     padding: 5px 16px;
     border-radius: 2px;
@@ -29,7 +29,8 @@
     text-align: center;
 }
 
-.icon + .title, .title + .icon {
+.icon + .title,
+.title + .icon {
     margin-left: 6px;
 }
 
@@ -58,7 +59,7 @@
 }
 
 .outline {
-    font-family: ProximaNova ,Arial,Tahoma,PingFangSC,sans-serif;
+    font-family: var(--font-family);
     color: #161823;
     font-weight: 600;
     font-size: 1.6rem;

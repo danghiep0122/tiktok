@@ -4,7 +4,7 @@ import HeadlessTippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
 import { useEffect, useRef, useState } from 'react';
 
-import * as searchServices  from '~/apiServices/searchServices';
+import * as searchServices from '~/apiServices/searchServices';
 import { useDebounce } from '~/hooks';
 import AccountItem from '~/components/AccountItem';
 import { MagnifyingIcon } from '~/components/icons';
@@ -50,6 +50,13 @@ function Search() {
 
     const handleHideResult = () => setShowResult(false);
 
+    const handleChange = (e) => {
+        const searchValue = e.target.value;
+        if (!searchValue.startsWith(' ')) {
+            setSearchValue(searchValue);
+        }
+    };
+
     return (
         <HeadlessTippy
             interactive
@@ -73,7 +80,7 @@ function Search() {
                     className={cx('input')}
                     placeholder="Search accounts and videos"
                     spellCheck={false}
-                    onChange={(e) => setSearchValue(e.target.value)}
+                    onChange={handleChange}
                     onFocus={() => setShowResult(true)}
                 />
                 {!!searchValue && !loading && (
@@ -83,7 +90,7 @@ function Search() {
                 )}
 
                 {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
-                <button className={cx('search-btn')}>
+                <button className={cx('search-btn')} onMouseDown={(e) => e.preventDefault()}>
                     <MagnifyingIcon width={'2.4rem'} height={'2.4rem'} />
                 </button>
             </div>

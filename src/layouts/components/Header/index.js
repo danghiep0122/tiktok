@@ -2,10 +2,9 @@ import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Tippy from '@tippyjs/react';
 import classNames from 'classnames/bind';
-import 'tippy.js/dist/tippy.css';
 import { Link } from 'react-router-dom';
+import 'tippy.js/dist/tippy.css';
 
-import routesConfig from '~/config/routes';
 import images from '~/assets/images';
 import Button from '~/components/Button';
 import {
@@ -22,6 +21,7 @@ import {
 } from '~/components/icons';
 import Image from '~/components/Image';
 import Menu from '~/components/Popper/Menu';
+import config from '~/config';
 import Search from '../Search';
 import style from './Header.module.scss';
 
@@ -100,7 +100,7 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <Link to={routesConfig.home}>
+                <Link to={config.routes.home}>
                     <img src={images.logo.default} className={cx('header-logo')} alt="Tiktok" />
                 </Link>
 
